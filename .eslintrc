@@ -56,6 +56,9 @@
       "jsx-a11y/no-autofocus": "off",
       "@typescript-eslint/naming-convention": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      "react/destructuring-assignment": "off"
+      "react/destructuring-assignment": "off",
+      "react/no-unused-prop-types": "warn",
+      "react/require-default-props": "off"
+
     }
   }
