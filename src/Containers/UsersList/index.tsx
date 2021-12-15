@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CardComponent from "Components/Cards";
 import { Link } from "react-router-dom";
-import style from "./mainPage.module.scss";
+import style from "./userList.module.scss";
 import { routes } from "../../router/routes";
 
-const MainPage = () => {
+const UserList = () => {
   const [data, setData] = useState<
     { id: number; name: string; image: string; location: { name: string } }[]
   >([]);
@@ -13,15 +14,23 @@ const MainPage = () => {
       setData(response.data.results);
     });
   }, []);
+
   return (
     <div className={style["page-container"]}>
-      <h3>MainPage</h3>
-      <Link className={style.link} to={routes.mainPage}>
-        Главная
-      </Link>
+      <h3>UserList</h3>
+      <Link to={routes.mainPage}>Главная</Link>
       <Link to={routes.userList}>Список пользователей</Link>
+      {data.map((character) => (
+        <CardComponent
+          key={character.id}
+          id={character.id}
+          name={character.name}
+          image={character.image}
+          location={character.location.name}
+        />
+      ))}
     </div>
   );
 };
 
-export default MainPage;
+export default UserList;
